@@ -1,0 +1,79 @@
+{
+  "expo": {
+    "name": "LYNX",
+    "slug": "lynx",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0D0F14"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.pockitolabs.lynx",
+      "infoPlist": {
+        "NSCameraUsageDescription": "LYNX needs camera access to record your video intro.",
+        "NSPhotoLibraryUsageDescription": "LYNX needs photo library access to add your profile photos.",
+        "NSMicrophoneUsageDescription": "LYNX needs microphone access to record voice messages.",
+        "NSLocationWhenInUseUsageDescription": "LYNX uses your location to show nearby members."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0D0F14"
+      },
+      "package": "com.pockitolabs.lynx",
+      "permissions": [
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.VIBRATE"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#7B8FFF",
+          "sounds": []
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow LYNX to use your location to show nearby members."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "LYNX needs access to your photos to set your profile picture."
+        }
+      ]
+    ],
+    "scheme": "lynx",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "0fc5b4ae-36fb-48cc-8d67-b30a876b653e"
+      }
+    },
+    "owner": "carloscalderonsv"
+  }
+}
