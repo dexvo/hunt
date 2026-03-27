@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — BREEDX</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg:#0D0F14; --s1:#13161E; --s2:#191D28; --s3:#1F2433;
+  --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.04);
+  --ice:#E8EEFF; --ice2:#A8B4D4; --ice3:#5C6A8A;
+  --accent:#7B8FFF; --accent2:#5A6FE8;
+  --accent-bg:rgba(123,143,255,0.1); --accent-border:rgba(123,143,255,0.2);
+  --glow:rgba(123,143,255,0.05); --white:#FFFFFF;
+}
+
+html, body {
+  width:100%; min-height:100%;
+  background: var(--bg);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 50% 35% at 50% 0%, var(--glow) 0%, transparent 60%),
+    var(--bg);
+}
+
+body::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:9999;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+}
+
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  background:rgba(13,15,20,0.8); backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border2);
+}
+.nav-content {
+  max-width:1200px; margin:0 auto; padding:20px 32px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.nav-logo {
+  font-size:24px; font-weight:600; letter-spacing:8px; text-indent:8px;
+  color:var(--ice); text-transform:uppercase; text-decoration:none;
+}
+.nav-back {
+  font-size:13px; color:var(--accent); text-decoration:none;
+  font-weight:500; display:flex; align-items:center; gap:8px;
+  transition:color 0.2s;
+}
+.nav-back:hover { color:var(--accent2); }
+
+.content {
+  max-width:800px; margin:0 auto;
+  padding:120px 32px 80px;
+}
+
+.doc-header {
+  text-align:center; margin-bottom:60px;
+  padding-bottom:40px; border-bottom:1px solid var(--border2);
+}
+
+.doc-title {
+  font-size:clamp(32px, 5vw, 48px); font-weight:600;
+  color:var(--ice); margin-bottom:12px;
+  letter-spacing:-0.02em;
+}
+
+.doc-updated {
+  font-size:13px; color:var(--ice3);
+  text-transform:uppercase; letter-spacing:1px;
+}
+
+.doc-body {
+  color:var(--ice2); line-height:1.8;
+}
+
+.doc-body h2 {
+  font-size:24px; font-weight:600; color:var(--ice);
+  margin:48px 0 20px; letter-spacing:-0.01em;
+}
+
+.doc-body h3 {
+  font-size:18px; font-weight:600; color:var(--ice2);
+  margin:32px 0 16px; letter-spacing:-0.01em;
+}
+
+.doc-body p {
+  margin-bottom:20px; font-size:15px;
+}
+
+.doc-body ul, .doc-body ol {
+  margin:20px 0 20px 24px;
+}
+
+.doc-body li {
+  margin-bottom:12px; font-size:15px;
+}
+
+.doc-body strong {
+  color:var(--ice); font-weight:600;
+}
+
+.doc-body a {
+  color:var(--accent); text-decoration:none;
+  border-bottom:1px solid transparent;
+  transition:border-color 0.2s;
+}
+.doc-body a:hover {
+  border-bottom-color:var(--accent);
+}
+
+.highlight-box {
+  background:var(--s2); border:1px solid var(--border);
+  border-left:3px solid var(--accent);
+  padding:20px 24px; border-radius:8px;
+  margin:32px 0;
+}
+
+.highlight-box p:last-child {
+  margin-bottom:0;
+}
+
+.footer {
+  padding:60px 32px 40px;
+  border-top:1px solid var(--border2);
+  margin-top:80px;
+}
+
+.footer-content {
+  max-width:800px; margin:0 auto;
+  text-align:center;
+}
+
+.footer-logo {
+  font-size:32px; font-weight:600; letter-spacing:12px; text-indent:12px;
+  color:var(--ice); text-transform:uppercase; margin-bottom:16px;
+}
+
+.footer-links {
+  display:flex; gap:24px; justify-content:center;
+  flex-wrap:wrap; margin-bottom:24px;
+}
+
+.footer-link {
+  font-size:13px; color:var(--ice3); text-decoration:none;
+  transition:color 0.2s;
+}
+.footer-link:hover { color:var(--ice); }
+
+.footer-copy {
+  font-size:12px; color:var(--ice3);
+}
+
+@media(max-width:768px) {
+  .nav-content { padding:16px 20px; }
+  .content { padding:100px 20px 60px; }
+  .doc-body h2 { font-size:20px; }
+  .doc-body h3 { font-size:16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-content">
+    <a href="https://breedx.pockitolabs.com" class="nav-logo">BREEDX</a>
+    <a href="https://breedx.pockitolabs.com" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<div class="content">
+  <div class="doc-header">
+    <h1 class="doc-title">Terms of Service</h1>
+    <p class="doc-updated">Last Updated: March 23, 2026</p>
+  </div>
+
+  <div class="doc-body">
+    <h2>Acceptance of Terms</h2>
+    <p>By creating an account and using BREEDX, you agree to be bound by these Terms of Service ("Terms"). If you do not agree, do not use BREEDX.</p>
+    <p>BREEDX is operated by <strong>Pockito Labs</strong>.</p>
+
+    <h2>Eligibility</h2>
+    <p>You must:</p>
+    <ul>
+      <li>Be at least <strong>18 years old</strong></li>
+      <li>Comply with all local laws regarding online conduct and acceptable content</li>
+      <li>Not be prohibited from using the service under the laws of the United States or any other applicable jurisdiction</li>
+    </ul>
+    <p><strong>We reserve the right to verify your age at any time.</strong> Providing false information is grounds for immediate account termination.</p>
+
+    <h2>Account Responsibilities</h2>
+
+    <h3>Registration</h3>
+    <ul>
+      <li>You must provide accurate, current, and complete information</li>
+      <li>You are responsible for maintaining the confidentiality of your account credentials</li>
+      <li>You must immediately notify us of any unauthorized use of your account at <a href="mailto:hello@pockitolabs.com">hello@pockitolabs.com</a></li>
+    </ul>
+
+    <h3>Prohibited Use</h3>
+    <p>You may <strong>not</strong>:</p>
+    <ul>
+      <li>Impersonate any person or entity</li>
+      <li>Use automated systems (bots, scrapers) to access the service</li>
+      <li>Transmit viruses, malware, or harmful code</li>
+      <li>Harass, threaten, or harm other users</li>
+      <li>Post spam, advertisements, or promotional content</li>
+      <li>Engage in or promote illegal activity (prostitution, drug sales, human trafficking)</li>
+      <li>Share or solicit private information without consent</li>
+      <li>Create multiple accounts to evade bans or restrictions</li>
+      <li>Use the service if you are a registered sex offender</li>
+    </ul>
+
+    <h2>User Content</h2>
+
+    <h3>Your Content</h3>
+    <ul>
+      <li>You retain ownership of photos, messages, and profile information you post</li>
+      <li>You grant BREEDX a worldwide, non-exclusive, royalty-free license to use, display, and distribute your content to provide the service</li>
+      <li>You represent that you have the right to post the content and it does not violate any third-party rights</li>
+    </ul>
+
+    <h3>Prohibited Content</h3>
+    <p>You may not post in <strong>public profile photos</strong>:</p>
+    <ul>
+      <li>Explicit nudity (exposed genitals, full frontal nudity)</li>
+      <li>Sexually explicit acts or pornographic content</li>
+    </ul>
+
+    <p>You may not post <strong>anywhere</strong> (profile or private messages):</p>
+    <ul>
+      <li>Content depicting minors in any sexual or suggestive context</li>
+      <li>Non-consensual intimate imagery (revenge porn, hidden camera footage)</li>
+      <li>Content depicting or promoting violence, self-harm, or illegal activity</li>
+      <li>Bestiality or sexual content involving animals</li>
+      <li>Hate speech, discriminatory content, or harassment</li>
+      <li>Spam, scams, or fraudulent schemes</li>
+      <li>Content that infringes copyright, trademark, or other intellectual property rights</li>
+    </ul>
+
+    <div class="highlight-box">
+      <p><strong>Private messages:</strong> Adult users may exchange sexually explicit photos and videos (including nudity and sexual acts) in private direct messages. This content must remain consensual and legal.</p>
+    </div>
+
+    <p>We reserve the right to remove any content that violates these Terms, without notice.</p>
+
+    <h2>Subscriptions and Payments</h2>
+
+    <h3>Free and Paid Services</h3>
+    <ul>
+      <li>BREEDX offers free and paid subscription tiers (Members Plus, BREEDX Black)</li>
+      <li>Pricing varies by region and is displayed at the time of purchase</li>
+      <li>Subscriptions auto-renew unless canceled before the renewal date</li>
+    </ul>
+
+    <h3>Billing</h3>
+    <ul>
+      <li>You authorize us to charge your payment method for the subscription fee</li>
+      <li>All fees are non-refundable except as required by law</li>
+      <li>Price changes will be communicated at least 30 days in advance</li>
+    </ul>
+
+    <h3>Cancellation</h3>
+    <ul>
+      <li>You may cancel your subscription at any time via Settings → Subscription → Cancel</li>
+      <li>Cancellation takes effect at the end of the current billing period</li>
+      <li>No partial refunds for unused time</li>
+    </ul>
+
+    <h2>Location Data</h2>
+    <ul>
+      <li>BREEDX uses your location to show you nearby users</li>
+      <li>You can control location sharing in Settings → Privacy → Location</li>
+      <li>Disabling location will limit core functionality (you won't appear in discovery)</li>
+      <li>Your exact location is never shared; only approximate distance</li>
+    </ul>
+
+    <h2>Safety and Moderation</h2>
+
+    <h3>User Conduct</h3>
+    <ul>
+      <li>You are solely responsible for your interactions with other users</li>
+      <li>BREEDX does not conduct background checks on users</li>
+      <li>Always exercise caution when meeting people in person</li>
+      <li>Report suspicious behavior immediately</li>
+    </ul>
+
+    <h3>Content Moderation</h3>
+    <ul>
+      <li>We reserve the right to monitor, review, and remove content</li>
+      <li>Violations of our Content Moderation Policy may result in warnings, suspension, or permanent ban</li>
+      <li>Decisions are final, but you may appeal to <a href="mailto:hello@pockitolabs.com">hello@pockitolabs.com</a></li>
+    </ul>
+
+    <h2>Intellectual Property</h2>
+    <ul>
+      <li>BREEDX and its logos, trademarks, and design are owned by Pockito Labs</li>
+      <li>You may not use our intellectual property without prior written consent</li>
+      <li>User-generated content remains the property of the user, but you grant us a license to use it</li>
+    </ul>
+
+    <h2>Disclaimers</h2>
+
+    <h3>No Guarantees</h3>
+    <ul>
+      <li>BREEDX is provided "as is" without warranties of any kind</li>
+      <li>We do not guarantee uninterrupted, error-free service</li>
+      <li>We do not endorse or verify user profiles, content, or claims</li>
+    </ul>
+
+    <h3>Third-Party Services</h3>
+    <ul>
+      <li>BREEDX may integrate with third-party services (payment processors, analytics)</li>
+      <li>We are not responsible for the actions, content, or policies of third parties</li>
+    </ul>
+
+    <h3>Limitation of Liability</h3>
+    <p>To the fullest extent permitted by law:</p>
+    <ul>
+      <li>Pockito Labs is not liable for any indirect, incidental, or consequential damages</li>
+      <li>Our total liability for any claim is limited to the amount you paid us in the past 12 months (or $100, whichever is greater)</li>
+      <li>We are not liable for user conduct, content, or interactions</li>
+    </ul>
+
+    <h2>Indemnification</h2>
+    <p>You agree to indemnify and hold Pockito Labs harmless from any claims, damages, or expenses (including legal fees) arising from:</p>
+    <ul>
+      <li>Your use of BREEDX</li>
+      <li>Your violation of these Terms</li>
+      <li>Your violation of any third-party rights</li>
+    </ul>
+
+    <h2>Termination</h2>
+
+    <h3>By You</h3>
+    <p>You may delete your account at any time via Settings → Account → Delete Account.</p>
+
+    <h3>By Us</h3>
+    <p>We may suspend or terminate your account immediately if:</p>
+    <ul>
+      <li>You violate these Terms or our Content Moderation Policy</li>
+      <li>We believe your account poses a safety or security risk</li>
+      <li>We discontinue the service (with 30 days' notice)</li>
+    </ul>
+
+    <p>Upon termination, your right to use BREEDX immediately ceases, and your data will be deleted per our Privacy Policy.</p>
+
+    <h2>Dispute Resolution</h2>
+
+    <h3>Governing Law</h3>
+    <p>These Terms are governed by the laws of <strong>El Salvador</strong>, without regard to conflict of law principles.</p>
+
+    <h3>Arbitration</h3>
+    <p>Any dispute arising from these Terms or your use of BREEDX will be resolved through binding arbitration, except:</p>
+    <ul>
+      <li>You may bring claims in small claims court if they qualify</li>
+      <li>We may seek injunctive relief in court for intellectual property violations</li>
+    </ul>
+
+    <p>You waive your right to a jury trial and to participate in class actions.</p>
+
+    <h3>Exceptions</h3>
+    <p>This arbitration clause does not apply to users in jurisdictions where such clauses are prohibited by law (e.g., some EU countries).</p>
+
+    <h2>Changes to Terms</h2>
+    <p>We may modify these Terms at any time. Material changes will be notified via:</p>
+    <ul>
+      <li>In-app notification</li>
+      <li>Email to your registered address</li>
+      <li>Updated "Last Updated" date</li>
+    </ul>
+
+    <p>Continued use after changes constitutes acceptance. If you do not agree, you must stop using BREEDX.</p>
+
+    <h2>General Provisions</h2>
+
+    <h3>Severability</h3>
+    <p>If any provision of these Terms is found invalid, the remaining provisions remain in effect.</p>
+
+    <h3>No Waiver</h3>
+    <p>Our failure to enforce any right or provision does not constitute a waiver of that right.</p>
+
+    <h3>Assignment</h3>
+    <p>You may not assign or transfer these Terms. We may assign them to any affiliate or successor.</p>
+
+    <h3>Entire Agreement</h3>
+    <p>These Terms, along with our Privacy Policy and Content Moderation Policy, constitute the entire agreement between you and Pockito Labs.</p>
+
+    <h2>Contact</h2>
+
+    <div class="highlight-box">
+      <p><strong>Pockito Labs</strong><br>
+      Email: <a href="mailto:hello@pockitolabs.com">hello@pockitolabs.com</a><br>
+      Support: Available in-app under Settings → Help & Support<br>
+      Address: Lourdes Colon, La Libertad, La Libertad Oeste, El Salvador</p>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">BREEDX</div>
+    <div class="footer-links">
+      <a href="https://breedx.pockitolabs.com" class="footer-link">Home</a>
+      <a href="https://breedx.pockitolabs.com/privacy.html" class="footer-link">Privacy Policy</a>
+      <a href="https://breedx.pockitolabs.com/terms.html" class="footer-link">Terms of Service</a>
+      <a href="https://breedx.pockitolabs.com/moderation.html" class="footer-link">Content Policy</a>
+    </div>
+    <p class="footer-copy">© 2026 Pockito Labs. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

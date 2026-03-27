@@ -67,7 +67,7 @@ export default function OnboardingVerify() {
           <Text style={styles.step}>2 of 4</Text>
           <Text variant="h2">Verify it's you</Text>
           <Text variant="sm" style={styles.desc}>
-            LYNX is real people only. Take a quick selfie — our team reviews every profile before it goes live.
+            BREEDX is real people only. Take a quick selfie — our team reviews every profile before it goes live.
           </Text>
 
           <View style={styles.rules}>
@@ -91,7 +91,7 @@ export default function OnboardingVerify() {
               if (!permission?.granted) {
                 const result = await requestPermission();
                 if (!result.granted) {
-                  Alert.alert('Camera required', 'LYNX needs camera access to verify your identity.');
+                  Alert.alert('Camera required', 'BREEDX needs camera access to verify your identity.');
                   return;
                 }
               }

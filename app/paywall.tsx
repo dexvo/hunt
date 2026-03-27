@@ -13,7 +13,7 @@ import { useSubStore } from '@/src/store/sub.store';
 const PERKS = [
   { icon: '◈', label: 'Unlimited messages' },
   { icon: '◎', label: 'See who tapped you' },
-  { icon: '✓', label: 'LYNX Black verified badge' },
+  { icon: '✓', label: 'HUNT Black verified badge' },
   { icon: '✈️', label: 'Travel mode — any city' },
   { icon: '🔒', label: 'Incognito browsing' },
   { icon: '🖼', label: 'Private albums with auto-expiry' },
@@ -44,7 +44,7 @@ export default function PaywallScreen() {
       const active = info.entitlements.active['members_plus'] !== undefined;
       setMembersPlus(active);
       if (active) {
-        Alert.alert('Welcome to LYNX Black', 'You\'re in.');
+        Alert.alert('Welcome to HUNT Black', 'You\'re in.');
         router.back();
       }
     } catch (e: any) {
@@ -58,7 +58,7 @@ export default function PaywallScreen() {
     setPurchasing(false);
     if (restored) {
       setMembersPlus(true);
-      Alert.alert('Restored', 'LYNX Black is active.');
+      Alert.alert('Restored', 'HUNT Black is active.');
       router.back();
     } else {
       Alert.alert('Nothing to restore', 'No active subscription found.');
@@ -89,8 +89,8 @@ export default function PaywallScreen() {
           <View style={styles.markOuter}><View style={styles.markInner} /></View>
         </View>
 
-        <Text style={styles.title}>LYNX Black</Text>
-        <Text style={styles.subtitle}>Not everyone gets in.</Text>
+        <Text style={styles.title}>HUNT Black</Text>
+        <Text style={styles.subtitle}>You Know What You Want.</Text>
 
         <View style={styles.perks}>
           {PERKS.map((p) => (
@@ -140,7 +140,7 @@ export default function PaywallScreen() {
         )}
 
         <Button
-          label={purchasing ? 'Processing…' : 'Join LYNX Black'}
+          label={purchasing ? 'Processing…' : 'Join HUNT Black'}
           variant="primary"
           fullWidth
           loading={purchasing}
@@ -167,14 +167,14 @@ const styles = StyleSheet.create({
   closeBtn: { alignSelf: 'flex-end', padding: 4, marginBottom: Spacing.xl },
   closeText: { fontSize: 18, color: Colors.ice3 },
   mark: { marginBottom: Spacing.lg },
-  markOuter: { width: 48, height: 48, borderWidth: 1, borderColor: Colors.accent, transform: [{ rotate: '45deg' }], alignItems: 'center', justifyContent: 'center' },
-  markInner: { width: 26, height: 26, borderWidth: 0.5, borderColor: Colors.accentBorder },
-  title: { fontSize: Typography['3xl'], fontWeight: Typography.semibold as any, color: Colors.ice, letterSpacing: Typography.tight as any, textAlign: 'center' },
-  subtitle: { fontSize: 13, color: Colors.accent, letterSpacing: 2, textTransform: 'uppercase', marginTop: 6, marginBottom: Spacing.xl },
+  markOuter: { width: 48, height: 48, borderWidth: 1.5, borderColor: Colors.accent, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
+  markInner: { width: 8, height: 8, borderRadius: 4, backgroundColor: Colors.accent },
+  title: { fontFamily: Typography.brand, fontSize: Typography['3xl'], color: Colors.ice, letterSpacing: Typography.logo, textAlign: 'center' },
+  subtitle: { fontFamily: Typography.medium, fontSize: 13, color: Colors.accent, letterSpacing: 2, textTransform: 'uppercase', marginTop: 6, marginBottom: Spacing.xl },
   perks: { width: '100%', gap: 12, marginBottom: Spacing.xl },
   perk: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   perkIcon: { fontSize: 16, width: 24, textAlign: 'center' },
-  perkLabel: { fontSize: 14, color: Colors.ice2, fontWeight: Typography.regular as any },
+  perkLabel: { fontFamily: Typography.regular, fontSize: 14, color: Colors.ice2 },
   packages: { width: '100%', gap: 10, marginBottom: Spacing.xl },
   pkg: { width: '100%', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: Colors.surface2, borderWidth: 1, borderColor: Colors.border, borderRadius: Radius.lg, padding: Spacing.lg },
   pkgSelected: { borderColor: Colors.accent, backgroundColor: Colors.accentBg },
@@ -182,14 +182,14 @@ const styles = StyleSheet.create({
   radio: { width: 20, height: 20, borderRadius: 10, borderWidth: 1.5, borderColor: Colors.border, alignItems: 'center', justifyContent: 'center' },
   radioSelected: { borderColor: Colors.accent },
   radioDot: { width: 10, height: 10, borderRadius: 5, backgroundColor: Colors.accent },
-  pkgPeriod: { fontSize: 15, fontWeight: Typography.semibold as any, color: Colors.ice },
+  pkgPeriod: { fontFamily: Typography.semibold, fontSize: 15, color: Colors.ice },
   pkgRight: { alignItems: 'flex-end', gap: 4 },
   savingsBadge: { backgroundColor: Colors.accentBg, borderWidth: 1, borderColor: Colors.accentBorder, borderRadius: Radius.sm, paddingHorizontal: 8, paddingVertical: 2 },
-  savingsText: { fontSize: 10, color: Colors.accent, fontWeight: Typography.semibold as any },
-  pkgPrice: { fontSize: 16, fontWeight: Typography.semibold as any, color: Colors.ice },
-  pkgPeriodText: { fontSize: 12, fontWeight: Typography.regular as any, color: Colors.ice3 },
+  savingsText: { fontFamily: Typography.semibold, fontSize: 10, color: Colors.accent },
+  pkgPrice: { fontFamily: Typography.semibold, fontSize: 16, color: Colors.ice },
+  pkgPeriodText: { fontFamily: Typography.regular, fontSize: 12, color: Colors.ice3 },
   cta: { marginBottom: Spacing.md },
-  legal: { fontSize: 10, color: Colors.ice3, textAlign: 'center', lineHeight: 16, marginBottom: Spacing.md },
+  legal: { fontFamily: Typography.regular, fontSize: 10, color: Colors.ice3, textAlign: 'center', lineHeight: 16, marginBottom: Spacing.md },
   restore: { padding: 8 },
-  restoreText: { fontSize: 12, color: Colors.accent },
+  restoreText: { fontFamily: Typography.regular, fontSize: 12, color: Colors.accent },
 });

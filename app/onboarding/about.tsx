@@ -10,8 +10,6 @@ export default function OnboardingAbout() {
   const { user } = useAuthStore();
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
-  const [city, setCity] = useState('');
-  const [bio, setBio] = useState('');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
 
@@ -21,25 +19,37 @@ export default function OnboardingAbout() {
     if (isNaN(ageNum) || ageNum < 18 || ageNum > 99) { setError('You must be 18 or older.'); return; }
     setSaving(true);
     try {
-      await profileApi.update(user.id, { display_name: name.trim(), age: ageNum, city: city.trim(), bio: bio.trim(), intent_mode: 'Chat', is_incognito: false });
-      router.push('/onboarding/verify');
+      await profileApi.update(user.id, {
+        display_name: name.trim(),
+        age: ageNum,
+        intent_mode: 'Chat',
+        is_incognito: false,
+        onboarding_step: 3,
+      });
+      router.push('/onboarding/role');
     } catch { setError('Could not save. Try again.'); } finally { setSaving(false); }
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.inner} keyboardShouldPersistTaps="handled">
-        <Text style={styles.step}>3 of 4</Text>
+        <Text style={styles.step}>Step 2 of 3</Text>
         <Text variant="h2">About you</Text>
         <Text variant="sm" style={{ marginTop: Spacing.sm, marginBottom: Spacing.xl }}>Real information only.</Text>
         <View style={styles.fields}>
           <Input value={name} onChangeText={setName} placeholder="Display name" autoFocus />
           <Input value={age} onChangeText={setAge} placeholder="Age" keyboardType="numeric" maxLength={2} />
-          <Input value={city} onChangeText={setCity} placeholder="City (optional)" />
-          <Input value={bio} onChangeText={setBio} placeholder="Bio — write something real" multiline numberOfLines={3} style={{ minHeight: 70, textAlignVertical: 'top' }} />
         </View>
         {error ? <Text style={styles.error}>{error}</Text> : null}
-        <Button label={saving ? 'Saving…' : 'Continue'} variant="primary" fullWidth loading={saving} disabled={!name || !age} onPress={handleContinue} style={{ marginTop: Spacing.xl }} />
+        <Button
+          label={saving ? 'Saving…' : 'Continue'}
+          variant="primary"
+          fullWidth
+          loading={saving}
+          disabled={!name || !age}
+          onPress={handleContinue}
+          style={{ marginTop: Spacing.xl }}
+        />
       </ScrollView>
     </SafeAreaView>
   );

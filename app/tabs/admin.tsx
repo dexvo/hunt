@@ -162,7 +162,7 @@ export default function AdminScreen() {
           <View style={styles.statRow}>
             {[
               { label: 'Verified', val: selectedUser.is_verified ? 'Yes' : 'No' },
-              { label: 'LYNX Black', val: selectedUser.is_premium ? 'Yes' : 'No' },
+              { label: 'HUNT Black', val: selectedUser.is_premium ? 'Yes' : 'No' },
               { label: 'Incognito', val: selectedUser.is_incognito ? 'Yes' : 'No' },
             ].map((s) => (
               <View key={s.label} style={styles.statItem}>
@@ -172,7 +172,7 @@ export default function AdminScreen() {
             ))}
           </View>
 
-          <Button label={selectedUser.is_premium ? 'Revoke LYNX Black' : 'Grant LYNX Black'} variant="secondary" onPress={() => handleGrantBlack(selectedUser.id, selectedUser.is_premium)} />
+          <Button label={selectedUser.is_premium ? 'Revoke HUNT Black' : 'Grant HUNT Black'} variant="secondary" onPress={() => handleGrantBlack(selectedUser.id, selectedUser.is_premium)} />
           <Button label="Ban user" variant="danger" onPress={() => handleBan(selectedUser.id)} />
         </ScrollView>
       </SafeAreaView>
@@ -183,7 +183,7 @@ export default function AdminScreen() {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text variant="h3">Admin</Text>
-        <Text style={styles.adminBadge}>◆ LYNX Admin</Text>
+        <Text style={styles.adminBadge}>◆ HUNT Admin</Text>
       </View>
 
       <View style={styles.tabs}>
@@ -269,7 +269,7 @@ export default function AdminScreen() {
           {[
             { label: 'Total users', val: stats.total },
             { label: 'Verified profiles', val: stats.verified },
-            { label: 'LYNX Black subscribers', val: stats.premium },
+            { label: 'HUNT Black subscribers', val: stats.premium },
             { label: 'Pending verification', val: stats.pending },
             { label: 'Joined today', val: stats.today },
             { label: 'Conversion rate', val: stats.total > 0 ? `${Math.round((stats.premium / stats.total) * 100)}%` : '0%' },

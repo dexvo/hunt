@@ -1,4 +1,5 @@
 export type IntentMode = 'Now' | 'Date' | 'Chat' | 'Travel';
+export type UserRole = 'top' | 'bottom';
 
 export interface Profile {
   id: string;
@@ -21,6 +22,9 @@ export interface Profile {
   verification_selfie: string | null;
   last_seen: string;
   updated_at: string;
+  role: UserRole | null;
+  has_completed_onboarding: boolean;
+  onboarding_step: number;
 }
 
 export interface ProfileCard {

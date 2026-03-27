@@ -54,10 +54,12 @@ function AppProviders({ children }: { children: React.ReactNode }) {
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
-    'Outfit-Light':    require('../assets/fonts/Outfit-Light.ttf'),
-    'Outfit-Regular':  require('../assets/fonts/Outfit-Regular.ttf'),
-    'Outfit-Medium':   require('../assets/fonts/Outfit-Medium.ttf'),
-    'Outfit-SemiBold': require('../assets/fonts/Outfit-SemiBold.ttf'),
+    'DMSans-Bold':      require('../assets/fonts/DMSans-Bold.ttf'),
+    'DMSans-SemiBold':  require('../assets/fonts/DMSans-SemiBold.ttf'),
+    'Inter-Light':      require('../assets/fonts/Inter-Light.ttf'),
+    'Inter-Regular':    require('../assets/fonts/Inter-Regular.ttf'),
+    'Inter-Medium':     require('../assets/fonts/Inter-Medium.ttf'),
+    'Inter-SemiBold':   require('../assets/fonts/Inter-SemiBold.ttf'),
   });
 
   useEffect(() => {

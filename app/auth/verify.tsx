@@ -4,6 +4,17 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { Colors, Spacing, Typography } from '@/src/constants/tokens';
 import { Text, Input, Button } from '@/src/components/ui';
 import { supabase } from '@/src/lib/supabase';
+import type { Profile } from '@/src/types';
+
+function getOnboardingRoute(profile: Profile | null): string {
+  if (!profile || !profile.has_completed_onboarding) {
+    const step = profile?.onboarding_step ?? 1;
+    if (step <= 1) return '/onboarding/photos';
+    if (step === 2) return '/onboarding/about';
+    return '/onboarding/role';
+  }
+  return '/tabs';
+}
 
 export default function VerifyScreen() {
   const { phone } = useLocalSearchParams<{ phone: string }>();
@@ -18,9 +29,8 @@ export default function VerifyScreen() {
     setLoading(false);
     if (e) { setError(e.message); return; }
     if (data.user) {
-      // Check if profile exists
-      const { data: profile } = await supabase.from('profiles').select('id').eq('id', data.user.id).maybeSingle();
-      router.replace(profile ? '/tabs' : '/onboarding/photos');
+      const { data: profile } = await supabase.from('profiles').select('*').eq('id', data.user.id).maybeSingle();
+      router.replace(getOnboardingRoute(profile as Profile | null) as any);
     }
   };
 
@@ -36,7 +46,16 @@ export default function VerifyScreen() {
       <View style={styles.inner}>
         <Text variant="h2">Check your phone</Text>
         <Text variant="sm" style={{ marginTop: Spacing.sm, marginBottom: Spacing.xl }}>Enter the code sent to {phone}</Text>
-        <Input value={otp} onChangeText={(t) => { setOtp(t.replace(/\D/g, '')); setError(''); }} placeholder="6-digit code" keyboardType="numeric" returnKeyType="done" onSubmitEditing={handleVerify} autoFocus maxLength={6} />
+        <Input
+          value={otp}
+          onChangeText={(t) => { setOtp(t.replace(/\D/g, '')); setError(''); }}
+          placeholder="6-digit code"
+          keyboardType="numeric"
+          returnKeyType="done"
+          onSubmitEditing={handleVerify}
+          autoFocus
+          maxLength={6}
+        />
         {error ? <Text style={styles.error}>{error}</Text> : null}
         <Button label="Verify" variant="primary" fullWidth loading={loading} onPress={handleVerify} style={{ marginTop: Spacing.xl }} />
         <TouchableOpacity onPress={handleResend} style={{ marginTop: Spacing.lg, alignItems: 'center' }}>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Moderation Policy — BREEDX</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg:#0D0F14; --s1:#13161E; --s2:#191D28; --s3:#1F2433;
+  --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.04);
+  --ice:#E8EEFF; --ice2:#A8B4D4; --ice3:#5C6A8A;
+  --accent:#7B8FFF; --accent2:#5A6FE8;
+  --accent-bg:rgba(123,143,255,0.1); --accent-border:rgba(123,143,255,0.2);
+  --glow:rgba(123,143,255,0.05); --white:#FFFFFF;
+}
+
+html, body {
+  width:100%; min-height:100%;
+  background: var(--bg);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 50% 35% at 50% 0%, var(--glow) 0%, transparent 60%),
+    var(--bg);
+}
+
+body::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:9999;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+}
+
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  background:rgba(13,15,20,0.8); backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border2);
+}
+.nav-content {
+  max-width:1200px; margin:0 auto; padding:20px 32px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.nav-logo {
+  font-size:24px; font-weight:600; letter-spacing:8px; text-indent:8px;
+  color:var(--ice); text-transform:uppercase; text-decoration:none;
+}
+.nav-back {
+  font-size:13px; color:var(--accent); text-decoration:none;
+  font-weight:500; display:flex; align-items:center; gap:8px;
+  transition:color 0.2s;
+}
+.nav-back:hover { color:var(--accent2); }
+
+.content {
+  max-width:800px; margin:0 auto;
+  padding:120px 32px 80px;
+}
+
+.doc-header {
+  text-align:center; margin-bottom:60px;
+  padding-bottom:40px; border-bottom:1px solid var(--border2);
+}
+
+.doc-title {
+  font-size:clamp(32px, 5vw, 48px); font-weight:600;
+  color:var(--ice); margin-bottom:12px;
+  letter-spacing:-0.02em;
+}
+
+.doc-updated {
+  font-size:13px; color:var(--ice3);
+  text-transform:uppercase; letter-spacing:1px;
+}
+
+.doc-body {
+  color:var(--ice2); line-height:1.8;
+}
+
+.doc-body h2 {
+  font-size:24px; font-weight:600; color:var(--ice);
+  margin:48px 0 20px; letter-spacing:-0.01em;
+}
+
+.doc-body h3 {
+  font-size:18px; font-weight:600; color:var(--ice2);
+  margin:32px 0 16px; letter-spacing:-0.01em;
+}
+
+.doc-body p {
+  margin-bottom:20px; font-size:15px;
+}
+
+.doc-body ul, .doc-body ol {
+  margin:20px 0 20px 24px;
+}
+
+.doc-body li {
+  margin-bottom:12px; font-size:15px;
+}
+
+.doc-body strong {
+  color:var(--ice); font-weight:600;
+}
+
+.doc-body a {
+  color:var(--accent); text-decoration:none;
+  border-bottom:1px solid transparent;
+  transition:border-color 0.2s;
+}
+.doc-body a:hover {
+  border-bottom-color:var(--accent);
+}
+
+.highlight-box {
+  background:var(--s2); border:1px solid var(--border);
+  border-left:3px solid var(--accent);
+  padding:20px 24px; border-radius:8px;
+  margin:32px 0;
+}
+
+.highlight-box p:last-child {
+  margin-bottom:0;
+}
+
+.footer {
+  padding:60px 32px 40px;
+  border-top:1px solid var(--border2);
+  margin-top:80px;
+}
+
+.footer-content {
+  max-width:800px; margin:0 auto;
+  text-align:center;
+}
+
+.footer-logo {
+  font-size:32px; font-weight:600; letter-spacing:12px; text-indent:12px;
+  color:var(--ice); text-transform:uppercase; margin-bottom:16px;
+}
+
+.footer-links {
+  display:flex; gap:24px; justify-content:center;
+  flex-wrap:wrap; margin-bottom:24px;
+}
+
+.footer-link {
+  font-size:13px; color:var(--ice3); text-decoration:none;
+  transition:color 0.2s;
+}
+.footer-link:hover { color:var(--ice); }
+
+.footer-copy {
+  font-size:12px; color:var(--ice3);
+}
+
+@media(max-width:768px) {
+  .nav-content { padding:16px 20px; }
+  .content { padding:100px 20px 60px; }
+  .doc-body h2 { font-size:20px; }
+  .doc-body h3 { font-size:16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-content">
+    <a href="https://breedx.pockitolabs.com" class="nav-logo">BREEDX</a>
+    <a href="https://breedx.pockitolabs.com" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<div class="content">
+  <div class="doc-header">
+    <h1 class="doc-title">Content Moderation Policy</h1>
+    <p class="doc-updated">Last Updated: March 23, 2026</p>
+  </div>
+
+  <div class="doc-body">
+    <p>BREEDX is committed to maintaining a safe, respectful, and inclusive environment for all users. This Content Moderation Policy outlines the standards we enforce and the actions we take to protect our community.</p>
+
+    <h2>Age Requirement</h2>
+    <ul>
+      <li>All users must be 18 years of age or older</li>
+      <li>We employ automated and manual verification systems to prevent underage access</li>
+      <li>Accounts found to belong to minors are immediately and permanently banned</li>
+    </ul>
+
+    <h2>Prohibited Content</h2>
+    <p>The following content is strictly prohibited on BREEDX:</p>
+
+    <h3>Profile Content (Photos, Bios, Username)</h3>
+    <ul>
+      <li>Explicit nudity (exposed genitals, full frontal nudity)</li>
+      <li>Sexually explicit acts or pornographic content</li>
+      <li>Images of minors or content sexualizing minors</li>
+      <li>Impersonation of others or use of others' photos without consent</li>
+      <li>Hate speech, discriminatory language, or symbols promoting violence</li>
+      <li>Promotion of illegal activities (drugs, prostitution, human trafficking)</li>
+      <li>Spam, commercial solicitation, or advertising</li>
+      <li>Graphic violence or self-harm content</li>
+    </ul>
+
+    <h3>Direct Messages</h3>
+    <ul>
+      <li>Harassment, threats, or intimidation</li>
+      <li>Non-consensual intimate imagery (revenge porn, hidden camera footage)</li>
+      <li>Content involving minors in any sexual or suggestive context</li>
+      <li>Bestiality or sexual content involving animals</li>
+      <li>Spam or fraudulent schemes</li>
+      <li>Solicitation for prostitution or illegal services</li>
+      <li>Sharing private information without consent (doxxing)</li>
+    </ul>
+
+    <div class="highlight-box">
+      <p><strong>Private Sexual Content:</strong> Adult users (18+) may consensually exchange sexually explicit photos and videos (including nudity and sexual acts) in private direct messages. Such content must remain consensual and legal. Users can report unwanted sexual content at any time.</p>
+    </div>
+
+    <h2>User Reporting</h2>
+    <p>Users can report violations directly within the app:</p>
+    <ul>
+      <li><strong>Profile Reports:</strong> Tap any profile → Report → Select reason</li>
+      <li><strong>Message Reports:</strong> Long-press any message → Report</li>
+      <li><strong>Block Feature:</strong> Users can immediately block anyone from contacting them</li>
+    </ul>
+
+    <p>All reports are reviewed within <strong>24 hours</strong>. Emergency reports (threats of violence, minors, illegal activity) are escalated immediately.</p>
+
+    <h2>Enforcement Actions</h2>
+    <p>Violations result in the following actions based on severity:</p>
+
+    <h3>First Offense (Minor Violations)</h3>
+    <ul>
+      <li>Warning notification</li>
+      <li>Temporary content removal</li>
+      <li>Account review</li>
+    </ul>
+
+    <h3>Repeat or Serious Violations</h3>
+    <ul>
+      <li>7-day account suspension</li>
+      <li>Permanent content removal</li>
+      <li>Profile visibility restriction</li>
+    </ul>
+
+    <h3>Severe Violations</h3>
+    <ul>
+      <li>Immediate and permanent account ban</li>
+      <li>IP and device ban to prevent re-registration</li>
+      <li>Report to law enforcement (for illegal activity involving minors, violence, or trafficking)</li>
+    </ul>
+
+    <h2>Automated Detection</h2>
+    <p>BREEDX employs automated systems to detect:</p>
+    <ul>
+      <li>Inappropriate profile photos (AI image moderation)</li>
+      <li>Spam patterns in messages</li>
+      <li>Known scam/fraud language</li>
+      <li>Banned email domains and phone numbers</li>
+    </ul>
+
+    <p>Automated flags are reviewed by human moderators before final action is taken.</p>
+
+    <h2>Photo Verification</h2>
+    <ul>
+      <li>Users may be required to verify their identity through live photo verification</li>
+      <li>Verified profiles receive a badge to increase trust</li>
+      <li>Failure to verify when requested may result in profile restrictions</li>
+    </ul>
+
+    <h2>Appeals Process</h2>
+    <p>Users may appeal moderation decisions:</p>
+    <ol>
+      <li>Email <a href="mailto:hello@pockitolabs.com">hello@pockitolabs.com</a> with subject "BREEDX Appeal - [Username]"</li>
+      <li>Include account details and reason for appeal</li>
+      <li>Appeals are reviewed within <strong>72 hours</strong></li>
+      <li>Final decisions are communicated via email</li>
+    </ol>
+
+    <h2>Content Removal Requests</h2>
+    <p>Users may request removal of their own content or report content that violates their privacy by contacting <a href="mailto:hello@pockitolabs.com">hello@pockitolabs.com</a>.</p>
+
+    <h2>Law Enforcement Cooperation</h2>
+    <p>BREEDX cooperates fully with law enforcement agencies investigating:</p>
+    <ul>
+      <li>Child exploitation</li>
+      <li>Human trafficking</li>
+      <li>Violent threats</li>
+      <li>Illegal activity</li>
+    </ul>
+
+    <p>User data may be disclosed to authorities when legally required or when necessary to prevent imminent harm.</p>
+
+    <h2>Policy Updates</h2>
+    <p>This policy may be updated periodically. Users will be notified of material changes via in-app notification and email.</p>
+
+    <h2>Contact</h2>
+
+    <div class="highlight-box">
+      <p><strong>Pockito Labs</strong><br>
+      Email: <a href="mailto:hello@pockitolabs.com">hello@pockitolabs.com</a><br>
+      Support: Available in-app under Settings → Help & Support<br>
+      Address: Lourdes Colon, La Libertad, La Libertad Oeste, El Salvador</p>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">BREEDX</div>
+    <div class="footer-links">
+      <a href="https://breedx.pockitolabs.com" class="footer-link">Home</a>
+      <a href="https://breedx.pockitolabs.com/privacy.html" class="footer-link">Privacy Policy</a>
+      <a href="https://breedx.pockitolabs.com/terms.html" class="footer-link">Terms of Service</a>
+      <a href="https://breedx.pockitolabs.com/moderation.html" class="footer-link">Content Policy</a>
+    </div>
+    <p class="footer-copy">© 2026 Pockito Labs. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

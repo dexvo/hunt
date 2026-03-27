@@ -120,15 +120,15 @@ export default function ProfileScreen() {
         <View style={styles.section}>
           <Text variant="label" style={styles.sectionTitle}>Membership</Text>
           <View style={styles.membershipCard}>
-            <Text style={styles.membershipTitle}>{isMembersPlus ? '✓ LYNX Black' : 'Free member'}</Text>
+            <Text style={styles.membershipTitle}>{isMembersPlus ? '✓ HUNT Black' : 'Free member'}</Text>
             {!isMembersPlus && (
-              <Button label="Upgrade to LYNX Black" variant="primary" style={{ marginTop: Spacing.sm }} onPress={() => router.push('/paywall')} />
+              <Button label="Upgrade to HUNT Black" variant="primary" style={{ marginTop: Spacing.sm }} onPress={() => router.push('/paywall')} />
             )}
             {isMembersPlus && (
               <Button label="Restore purchases" variant="ghost" style={{ marginTop: Spacing.sm }} onPress={async () => {
                 const { restorePurchases } = await import('@/src/lib/purchases');
                 const ok = await restorePurchases();
-                Alert.alert(ok ? 'Restored' : 'Nothing to restore', ok ? 'LYNX Black is active.' : 'No active subscription found.');
+                Alert.alert(ok ? 'Restored' : 'Nothing to restore', ok ? 'HUNT Black is active.' : 'No active subscription found.');
               }} />
             )}
           </View>

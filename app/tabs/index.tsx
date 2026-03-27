@@ -40,7 +40,7 @@ export default function MembersScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.logo}>LYNX</Text>
+        <Text style={styles.logo}>BREEDX</Text>
         <View style={styles.headerRight}>
           <TouchableOpacity style={styles.iconBtn}><Text style={styles.iconText}>⊟</Text></TouchableOpacity>
           <TouchableOpacity style={styles.iconBtn}><Text style={styles.iconText}>○</Text></TouchableOpacity>
@@ -67,7 +67,7 @@ export default function MembersScreen() {
           style={[styles.chip, filters.members_plus && styles.chipActive]}
           onPress={() => useGridStore.getState().setFilters({ members_plus: !filters.members_plus })}
         >
-          <Text style={[styles.chipText, filters.members_plus && styles.chipTextActive]}>LYNX Black</Text>
+          <Text style={[styles.chipText, filters.members_plus && styles.chipTextActive]}>BREEDX Black</Text>
         </TouchableOpacity>
       </View>
 

@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BREEDX — Not everyone gets in.</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg:#0D0F14; --s1:#13161E; --s2:#191D28; --s3:#1F2433;
+  --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.04);
+  --ice:#E8EEFF; --ice2:#A8B4D4; --ice3:#5C6A8A;
+  --accent:#7B8FFF; --accent2:#5A6FE8;
+  --accent-bg:rgba(123,143,255,0.1); --accent-border:rgba(123,143,255,0.2);
+  --glow:rgba(123,143,255,0.05); --white:#FFFFFF;
+}
+
+html, body {
+  width:100%; min-height:100%;
+  background: var(--bg);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 50% 35% at 50% 0%, var(--glow) 0%, transparent 60%),
+    var(--bg);
+}
+
+body::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:9999;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+}
+
+/* ── NAVIGATION ── */
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  background:rgba(13,15,20,0.8); backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border2);
+}
+.nav-content {
+  max-width:1200px; margin:0 auto; padding:20px 32px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.nav-logo {
+  font-size:24px; font-weight:600; letter-spacing:8px; text-indent:8px;
+  color:var(--ice); text-transform:uppercase;
+}
+.nav-links { display:flex; gap:32px; align-items:center; }
+.nav-link {
+  font-size:13px; color:var(--ice3); text-decoration:none;
+  font-weight:400; letter-spacing:0.3px; transition:color 0.2s;
+}
+.nav-link:hover { color:var(--ice); }
+.nav-cta {
+  background:var(--accent); color:var(--white); border:none;
+  padding:10px 20px; font-size:13px; font-weight:500;
+  border-radius:6px; cursor:pointer; transition:all 0.2s;
+  font-family:'Outfit',sans-serif; letter-spacing:0.3px;
+}
+.nav-cta:hover { background:var(--accent2); }
+
+@media(max-width:768px) {
+  .nav-links { display:none; }
+}
+
+/* ── HERO ── */
+.hero {
+  padding:140px 32px 80px;
+  text-align:center;
+  max-width:1400px; margin:0 auto;
+}
+.hero-pre {
+  font-size:11px; font-weight:500; color:var(--accent);
+  letter-spacing:3px; text-transform:uppercase; margin-bottom:16px;
+}
+.hero-title {
+  font-size:clamp(36px, 6vw, 64px); font-weight:600;
+  color:var(--ice); line-height:1.1; margin-bottom:20px;
+  letter-spacing:-0.02em;
+}
+.hero-sub {
+  font-size:clamp(16px, 2vw, 20px); color:var(--ice2);
+  max-width:600px; margin:0 auto 48px; line-height:1.6;
+  font-weight:300;
+}
+
+/* ── MOCKUPS ── */
+.mockups {
+  display:flex; gap:32px; justify-content:center; align-items:flex-start;
+  flex-wrap:wrap; margin-top:60px;
+  perspective:1200px;
+}
+
+.device-wrapper {
+  display:flex; flex-direction:column; align-items:center; gap:12px;
+  animation:float 4s ease-in-out infinite;
+}
+.device-wrapper:nth-child(2) { animation-delay:-2s; }
+
+.device-label {
+  font-size:9px; font-weight:400; letter-spacing:3px;
+  text-transform:uppercase; color:var(--ice3);
+}
+
+.device {
+  width:310px; height:660px;
+  background:var(--s1);
+  border-radius:42px;
+  border:1px solid var(--border);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.4), 0 40px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.04);
+  position:relative; overflow:hidden; flex-shrink:0;
+}
+
+@keyframes float {
+  0%, 100% { transform:translateY(0px) rotateY(0deg); }
+  50% { transform:translateY(-12px) rotateY(2deg); }
+}
+
+.notch {
+  position:absolute; top:10px; left:50%; transform:translateX(-50%);
+  width:90px; height:26px; background:#000; border-radius:14px; z-index:100;
+}
+
+.sb {
+  height:44px; display:flex; align-items:flex-end;
+  justify-content:space-between; padding:0 20px 8px; flex-shrink:0;
+}
+.sb-t { font-size:12px; font-weight:500; color:var(--ice); }
+.sb-i { font-size:10px; color:var(--ice2); letter-spacing:2px; }
+
+.sa {
+  flex:1; overflow-y:auto; overflow-x:hidden;
+  scrollbar-width:thin; scrollbar-color:var(--accent-border) transparent;
+}
+.sa::-webkit-scrollbar { width:1px; }
+.sa::-webkit-scrollbar-thumb { background:var(--accent-border); border-radius:1px; }
+
+/* ── GRID DISCOVERY (GRINDR STYLE) ── */
+.ds {
+  width:100%; height:100%; display:flex; flex-direction:column;
+  background:var(--s1);
+}
+
+.d-head {
+  padding:0 20px 12px; border-bottom:1px solid var(--border2);
+}
+.d-title {
+  font-size:26px; font-weight:600; color:var(--ice);
+  letter-spacing:-0.02em; margin-bottom:4px;
+}
+.d-sub {
+  font-size:11px; color:var(--ice3); font-weight:400;
+}
+
+.filters {
+  display:flex; gap:8px; padding:16px 20px; overflow-x:auto;
+}
+.filters::-webkit-scrollbar { display:none; }
+.filter-chip {
+  background:var(--s2); border:1px solid var(--border);
+  padding:8px 14px; border-radius:20px; font-size:12px;
+  color:var(--ice2); white-space:nowrap; flex-shrink:0;
+  font-weight:400;
+}
+.filter-chip.active {
+  background:var(--accent-bg); border-color:var(--accent-border);
+  color:var(--accent);
+}
+
+.grid {
+  display:grid; grid-template-columns:repeat(3, 1fr);
+  gap:4px; padding:0 4px 20px;
+}
+
+.grid-tile {
+  aspect-ratio:1; background:var(--s2);
+  border:1px solid var(--border); border-radius:8px;
+  position:relative; overflow:hidden; cursor:pointer;
+}
+
+.tile-img {
+  width:100%; height:100%;
+  background:linear-gradient(135deg, var(--s3) 0%, var(--s2) 100%);
+  display:flex; align-items:center; justify-content:center;
+  font-size:28px; font-weight:600; color:var(--ice);
+}
+
+.tile-verify {
+  position:absolute; top:6px; left:6px;
+  background:rgba(0,0,0,0.5);
+  padding:3px 5px; border-radius:6px;
+  font-size:8px; color:rgba(255,255,255,0.5); font-weight:500;
+}
+
+.tile-online {
+  position:absolute; top:7px; right:7px;
+  width:6px; height:6px; border-radius:50%;
+  background:#3DDB8A; border:1.5px solid var(--s2);
+}
+
+.tile-info {
+  position:absolute; bottom:0; left:0; right:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+  padding:28px 8px 6px;
+}
+
+.tile-name {
+  font-size:12px; font-weight:600; color:var(--white);
+  display:flex; align-items:center; gap:5px;
+  text-shadow:0 1px 2px rgba(0,0,0,0.5);
+}
+
+.tile-meta {
+  font-size:9px; color:rgba(255,255,255,0.6);
+  margin-top:2px;
+}
+
+.tile-role {
+  display:inline-block;
+  padding:1px 5px; border-radius:3px;
+  font-size:7px; font-weight:600;
+  text-transform:uppercase; letter-spacing:0.5px;
+  color:var(--white);
+}
+
+.tile-role.top { background:#7B8FFF; }
+.tile-role.bottom { background:#FF6B5B; }
+
+/* ── CHAT SCREEN ── */
+.cs {
+  width:100%; height:100%; display:flex; flex-direction:column;
+  background:var(--s1);
+}
+
+.c-head {
+  padding:12px 20px; border-bottom:1px solid var(--border2);
+  display:flex; align-items:center; gap:12px;
+}
+
+.c-back {
+  background:none; border:none; color:var(--accent);
+  font-size:18px; cursor:pointer; padding:0; width:24px;
+}
+
+.c-av {
+  width:38px; height:38px; border-radius:50%;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; font-weight:600; color:var(--white);
+  position:relative; flex-shrink:0;
+}
+
+.c-dot {
+  position:absolute; bottom:0; right:0;
+  width:10px; height:10px; background:#3DDB8A;
+  border:2px solid var(--s1); border-radius:50%;
+}
+
+.c-hi { flex:1; min-width:0; }
+.c-hn {
+  font-size:14px; font-weight:600; color:var(--ice);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.c-hs {
+  font-size:11px; color:var(--ice3); font-weight:400;
+}
+
+.c-msgs {
+  flex:1; padding:16px 20px; display:flex;
+  flex-direction:column; gap:12px;
+}
+
+.msg-date {
+  text-align:center; font-size:10px; color:var(--ice3);
+  text-transform:uppercase; letter-spacing:1px; margin:8px 0;
+}
+
+.intent-banner {
+  background:var(--accent-bg); border:1px solid var(--accent-border);
+  border-radius:10px; padding:10px 12px;
+  display:flex; align-items:center; gap:10px;
+  margin-bottom:4px;
+}
+.ib-dot {
+  width:6px; height:6px; background:var(--accent);
+  border-radius:50%; flex-shrink:0;
+}
+.ib-text {
+  font-size:11px; color:var(--ice2); line-height:1.4;
+}
+.ib-text strong { color:var(--accent); font-weight:600; }
+
+.br { display:flex; }
+.br.me { justify-content:flex-end; }
+
+.bub {
+  max-width:75%; padding:10px 14px; border-radius:16px;
+  font-size:13px; line-height:1.4; position:relative;
+  word-wrap:break-word;
+}
+.bub.them {
+  background:var(--s2); color:var(--ice);
+  border:1px solid var(--border);
+  border-bottom-left-radius:4px;
+}
+.bub.me {
+  background:var(--accent); color:var(--white);
+  border-bottom-right-radius:4px;
+}
+
+.bt {
+  font-size:9px; color:var(--ice3); margin-top:4px;
+  opacity:0.7;
+}
+.bub.me .bt { color:rgba(255,255,255,0.7); }
+
+.voice-bub {
+  background:var(--s2); border:1px solid var(--border);
+  border-radius:16px; padding:10px 12px;
+  display:flex; align-items:center; gap:10px;
+  max-width:75%;
+}
+
+.vb-play {
+  width:28px; height:28px; border-radius:50%;
+  background:var(--accent); border:none;
+  color:var(--white); font-size:10px;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; flex-shrink:0;
+}
+
+.vb-wave {
+  flex:1; display:flex; gap:2px; align-items:center;
+  height:20px;
+}
+.vb-bar {
+  width:2px; background:var(--accent); border-radius:2px;
+  opacity:0.5; transition:all 0.2s;
+}
+
+.vb-time {
+  font-size:10px; color:var(--ice3); flex-shrink:0;
+}
+
+.c-input {
+  padding:12px 20px; border-top:1px solid var(--border2);
+  display:flex; gap:10px; align-items:center;
+  background:rgba(0,0,0,0.2);
+}
+
+.voice-btn {
+  width:36px; height:36px; border-radius:50%;
+  background:var(--s2); border:1px solid var(--border);
+  font-size:16px; display:flex; align-items:center;
+  justify-content:center; cursor:pointer; flex-shrink:0;
+}
+
+.c-inp {
+  flex:1; background:var(--s2); border:1px solid var(--border);
+  padding:10px 14px; border-radius:20px;
+  font-size:13px; color:var(--ice); font-family:'Outfit',sans-serif;
+  outline:none;
+}
+.c-inp::placeholder { color:var(--ice3); }
+
+.c-send {
+  width:36px; height:36px; border-radius:50%;
+  background:var(--accent); border:none;
+  color:var(--white); font-size:16px; font-weight:600;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; flex-shrink:0;
+}
+
+/* ── STATS BAR ── */
+.stats {
+  padding:60px 32px;
+  border-top:1px solid var(--border2);
+  border-bottom:1px solid var(--border2);
+  background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.2) 100%);
+}
+.stats-grid {
+  max-width:1000px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+  gap:32px;
+}
+.stat {
+  text-align:center;
+}
+.stat-value {
+  font-size:clamp(32px, 4vw, 48px); font-weight:600;
+  color:var(--accent); line-height:1; margin-bottom:8px;
+}
+.stat-label {
+  font-size:13px; color:var(--ice3);
+  text-transform:uppercase; letter-spacing:1px;
+}
+
+/* ── FEATURES ── */
+.features {
+  padding:80px 32px;
+  max-width:1200px; margin:0 auto;
+}
+.section-pre {
+  font-size:11px; font-weight:500; color:var(--accent);
+  letter-spacing:3px; text-transform:uppercase; text-align:center;
+  margin-bottom:12px;
+}
+.section-title {
+  font-size:clamp(28px, 4vw, 40px); font-weight:600;
+  color:var(--ice); text-align:center; margin-bottom:16px;
+  letter-spacing:-0.02em;
+}
+.section-sub {
+  font-size:16px; color:var(--ice2); text-align:center;
+  max-width:600px; margin:0 auto 48px; line-height:1.6;
+}
+
+.features-grid {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:24px;
+}
+
+.feature {
+  background:var(--s2); border:1px solid var(--border);
+  border-radius:16px; padding:28px; position:relative;
+  transition:all 0.3s;
+}
+.feature:hover {
+  border-color:var(--accent-border);
+  transform:translateY(-4px);
+}
+
+.feature-badge {
+  position:absolute; top:16px; right:16px;
+  font-size:9px; padding:4px 8px; border-radius:12px;
+  text-transform:uppercase; letter-spacing:1px; font-weight:600;
+}
+.badge-free {
+  background:rgba(61,219,138,0.1); border:1px solid rgba(61,219,138,0.2);
+  color:#3DDB8A;
+}
+.badge-pro {
+  background:var(--accent-bg); border:1px solid var(--accent-border);
+  color:var(--accent);
+}
+
+.feature-icon {
+  font-size:32px; margin-bottom:16px;
+}
+
+.feature-title {
+  font-size:18px; font-weight:600; color:var(--ice);
+  margin-bottom:8px; letter-spacing:-0.01em;
+}
+
+.feature-desc {
+  font-size:13px; color:var(--ice3); line-height:1.6;
+}
+
+/* ── PREMIUM SECTION ── */
+.premium {
+  padding:80px 32px;
+  background:linear-gradient(155deg, #12192E 0%, #0A0D18 100%);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.premium-content {
+  max-width:1000px; margin:0 auto;
+  text-align:center;
+}
+
+.premium-badge {
+  display:inline-block;
+  background:rgba(0,0,0,0.6); border:1px solid var(--border);
+  padding:8px 16px; border-radius:24px;
+  font-size:11px; color:var(--accent); font-weight:600;
+  letter-spacing:2px; text-transform:uppercase;
+  margin-bottom:24px;
+}
+
+.premium-title {
+  font-size:clamp(36px, 5vw, 56px); font-weight:600;
+  color:var(--ice); margin-bottom:16px;
+  letter-spacing:-0.02em;
+}
+
+.premium-sub {
+  font-size:18px; color:var(--ice2); max-width:600px;
+  margin:0 auto 40px; line-height:1.6;
+}
+
+.premium-features {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:24px; margin-bottom:40px;
+}
+
+.premium-feature {
+  text-align:left; padding:20px;
+  background:rgba(255,255,255,0.02); border:1px solid var(--border2);
+  border-radius:12px;
+}
+
+.premium-feature-icon {
+  font-size:24px; margin-bottom:12px;
+}
+
+.premium-feature-title {
+  font-size:15px; font-weight:600; color:var(--ice);
+  margin-bottom:6px;
+}
+
+.premium-feature-desc {
+  font-size:12px; color:var(--ice3); line-height:1.5;
+}
+
+.premium-cta {
+  background:var(--accent); color:var(--white);
+  border:none; padding:16px 40px; font-size:15px; font-weight:600;
+  border-radius:8px; cursor:pointer; font-family:'Outfit',sans-serif;
+  transition:all 0.2s; letter-spacing:0.3px;
+}
+.premium-cta:hover { background:var(--accent2); transform:translateY(-2px); }
+
+/* ── PRICING ── */
+.pricing {
+  padding:80px 32px;
+  max-width:1200px; margin:0 auto;
+}
+
+.pricing-grid {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:24px;
+}
+
+.plan {
+  background:var(--s2); border:1px solid var(--border);
+  border-radius:16px; padding:32px;
+  position:relative;
+}
+
+.plan.featured {
+  border-color:var(--accent-border);
+  background:var(--accent-bg);
+}
+
+.plan-badge {
+  position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+  background:var(--accent); color:var(--white);
+  padding:6px 16px; border-radius:20px;
+  font-size:10px; font-weight:600; letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.plan-name {
+  font-size:14px; color:var(--ice3); font-weight:500;
+  text-transform:uppercase; letter-spacing:2px; margin-bottom:12px;
+}
+
+.plan-price {
+  font-size:48px; font-weight:600; color:var(--ice);
+  line-height:1; margin-bottom:4px;
+}
+.plan-price span {
+  font-size:16px; color:var(--ice3); font-weight:400;
+}
+
+.plan-desc {
+  font-size:13px; color:var(--ice3); margin-bottom:24px;
+}
+
+.plan-features {
+  list-style:none; margin-bottom:28px;
+}
+
+.plan-feature {
+  font-size:13px; color:var(--ice2); margin-bottom:12px;
+  padding-left:24px; position:relative;
+  line-height:1.4;
+}
+.plan-feature::before {
+  content:'✓'; position:absolute; left:0;
+  color:var(--accent); font-weight:600;
+}
+
+.plan-btn {
+  width:100%; background:var(--accent); color:var(--white);
+  border:none; padding:14px; border-radius:8px;
+  font-size:14px; font-weight:600; cursor:pointer;
+  font-family:'Outfit',sans-serif; transition:all 0.2s;
+}
+.plan-btn:hover { background:var(--accent2); }
+
+.plan-btn.secondary {
+  background:transparent; border:1px solid var(--border);
+  color:var(--ice2);
+}
+
+/* ── DOWNLOAD ── */
+.download {
+  padding:80px 32px;
+  text-align:center;
+  background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 100%);
+}
+
+.download-content {
+  max-width:700px; margin:0 auto;
+}
+
+.download-buttons {
+  display:flex; gap:16px; justify-content:center;
+  flex-wrap:wrap; margin-top:32px;
+}
+
+.store-btn {
+  display:flex; align-items:center; gap:12px;
+  background:var(--s2); border:1px solid var(--border);
+  padding:12px 24px; border-radius:12px;
+  cursor:pointer; transition:all 0.2s;
+  text-decoration:none;
+}
+.store-btn:hover {
+  border-color:var(--accent-border);
+  transform:translateY(-2px);
+}
+
+.store-icon {
+  font-size:32px;
+}
+
+.store-text {
+  text-align:left;
+}
+
+.store-pre {
+  font-size:9px; color:var(--ice3);
+  text-transform:uppercase; letter-spacing:1px;
+}
+
+.store-name {
+  font-size:16px; font-weight:600; color:var(--ice);
+}
+
+/* ── FOOTER ── */
+.footer {
+  padding:60px 32px 40px;
+  border-top:1px solid var(--border2);
+}
+
+.footer-content {
+  max-width:1200px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+  gap:40px; margin-bottom:40px;
+}
+
+.footer-brand {
+  grid-column:1/-1;
+}
+
+.footer-logo {
+  font-size:32px; font-weight:600; letter-spacing:12px; text-indent:12px;
+  color:var(--ice); text-transform:uppercase; margin-bottom:12px;
+}
+
+.footer-tagline {
+  font-size:13px; color:var(--ice3); max-width:300px;
+}
+
+.footer-section-title {
+  font-size:12px; color:var(--ice); font-weight:600;
+  text-transform:uppercase; letter-spacing:2px; margin-bottom:16px;
+}
+
+.footer-links {
+  list-style:none;
+}
+
+.footer-link {
+  margin-bottom:10px;
+}
+
+.footer-link a {
+  font-size:13px; color:var(--ice3); text-decoration:none;
+  transition:color 0.2s;
+}
+.footer-link a:hover { color:var(--ice); }
+
+.footer-bottom {
+  max-width:1200px; margin:0 auto;
+  padding-top:32px; border-top:1px solid var(--border2);
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:16px;
+}
+
+.footer-copy {
+  font-size:12px; color:var(--ice3);
+}
+
+.footer-social {
+  display:flex; gap:16px;
+}
+
+.social-link {
+  width:36px; height:36px; border-radius:50%;
+  background:var(--s2); border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; color:var(--ice3); text-decoration:none;
+  transition:all 0.2s;
+}
+.social-link:hover {
+  border-color:var(--accent-border);
+  color:var(--accent);
+}
+
+@media(max-width:768px) {
+  .mockups { padding:0 16px; }
+  .device { width:280px; height:596px; }
+  .grid { grid-template-columns:repeat(2, 1fr); }
+  .footer-content { grid-template-columns:1fr; }
+  .footer-bottom { flex-direction:column; text-align:center; }
+}
+</style>
+</head>
+<body class="violet">
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <div class="nav-content">
+    <div class="nav-logo">BREED<span style="color:var(--accent)">X</span></div>
+    <div class="nav-links">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#download" class="nav-link">Download</a>
+      <button class="nav-cta">Get Started</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-pre">Not everyone gets in.</p>
+  <h1 class="hero-title">Know your role.<br>Find your match.</h1>
+  <p class="hero-sub">The gay dating app where everyone declares. Top or Bottom — no guessing, no games. Just real connections.</p>
+
+  <!-- MOCKUPS -->
+  <div class="mockups">
+    <!-- GRID DISCOVERY -->
+    <div class="device-wrapper">
+      <div class="device">
+        <div class="notch"></div>
+        <div class="ds">
+          <div class="sb"><span class="sb-t">9:41</span><span class="sb-i">▪ ▪ ▪</span></div>
+          <div class="d-head">
+            <h2 class="d-title">BREED<span style="color:var(--accent)">X</span></h2>
+            <p class="d-sub">Roma Norte, CDMX · 18 online · Tops & Bottoms</p>
+          </div>
+          <div class="filters">
+            <div class="filter-chip active">Tops</div>
+            <div class="filter-chip">Bottoms</div>
+            <div class="filter-chip">Now mode</div>
+            <div class="filter-chip">Verified</div>
+            <div class="filter-chip">< 1km</div>
+          </div>
+          <div class="sa">
+            <div class="grid">
+              <div class="grid-tile">
+                <div class="tile-img">C
+                  <div class="tile-verify">✓</div>
+                  <div class="tile-online"></div>
+                  <div class="tile-info">
+                    <p class="tile-name">Carlos, 28 <span class="tile-role top">Top</span></p>
+                    <p class="tile-meta">📍 500m</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="grid-tile">
+                <div class="tile-img">M
+                  <div class="tile-verify">✓</div>
+                  <div class="tile-info">
+                    <p class="tile-name">Mateo, 26 <span class="tile-role bottom">Btm</span></p>
+                    <p class="tile-meta">📍 1.2km</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid-tile">
+                <div class="tile-img">D
+                  <div class="tile-online"></div>
+                  <div class="tile-info">
+                    <p class="tile-name">Diego, 30 <span class="tile-role top">Top</span></p>
+                    <p class="tile-meta">📍 800m</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid-tile">
+                <div class="tile-img">J
+                  <div class="tile-verify">✓</div>
+                  <div class="tile-online"></div>
+                  <div class="tile-info">
+                    <p class="tile-name">Javier, 25 <span class="tile-role bottom">Btm</span></p>
+                    <p class="tile-meta">📍 600m</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid-tile">
+                <div class="tile-img">A
+                  <div class="tile-info">
+                    <p class="tile-name">Andrés, 29 <span class="tile-role top">Top</span></p>
+                    <p class="tile-meta">📍 1.5km</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid-tile">
+                <div class="tile-img">R
+                  <div class="tile-verify">✓</div>
+                  <div class="tile-info">
+                    <p class="tile-name">Roberto, 27 <span class="tile-role bottom">Btm</span></p>
+                    <p class="tile-meta">📍 900m</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="device-label">01 · Grid Discovery + Role Tags</p>
+    </div>
+
+    <!-- CHAT -->
+    <div class="device-wrapper">
+      <div class="device">
+        <div class="notch"></div>
+        <div class="cs">
+          <div class="sb"><span class="sb-t">9:41</span><span class="sb-i">▪ ▪ ▪</span></div>
+          <div class="c-head">
+            <button class="c-back">←</button>
+            <div class="c-av">M<div class="c-dot"></div></div>
+            <div class="c-hi">
+              <p class="c-hn">Mateo R.</p>
+              <p class="c-hs">Online · Now mode · <span style="color:#FF6B5B;font-weight:600;">Bottom</span></p>
+            </div>
+          </div>
+          <div class="c-msgs sa">
+            <p class="msg-date">Today</p>
+            <div class="intent-banner">
+              <div class="ib-dot"></div>
+              <p class="ib-text">Mateo is in <strong>Now</strong> mode — open to meeting up today</p>
+            </div>
+            <div class="br">
+              <div class="bub them">Hey — saw you're in Roma Norte too. Around often?<p class="bt">9:12</p></div>
+            </div>
+            <div class="br me">
+              <div class="bub me">Yeah, 3 blocks from Álvaro Obregón.<p class="bt">9:15</p></div>
+            </div>
+            <div class="br">
+              <div class="voice-bub">
+                <button class="vb-play">▶</button>
+                <div class="vb-wave" id="wave"></div>
+                <span class="vb-time">0:14</span>
+              </div>
+            </div>
+            <div class="br me">
+              <div class="bub me">I know a spot on Orizaba — low key, great music.<p class="bt">9:21</p></div>
+            </div>
+            <div class="br">
+              <div class="bub them">When are you free?<p class="bt">9:39</p></div>
+            </div>
+          </div>
+          <div class="c-input">
+            <button class="voice-btn">🎤</button>
+            <input class="c-inp" type="text" placeholder="Write a message…">
+            <button class="c-send">→</button>
+          </div>
+        </div>
+      </div>
+      <p class="device-label">02 · Chat + Voice</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat">
+      <p class="stat-value">$4.99</p>
+      <p class="stat-label">LATAM Pricing</p>
+    </div>
+    <div class="stat">
+      <p class="stat-value">24hr</p>
+      <p class="stat-label">Moderation Response</p>
+    </div>
+    <div class="stat">
+      <p class="stat-value">4</p>
+      <p class="stat-label">Languages</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <p class="section-pre">Platform Features</p>
+  <h2 class="section-title">Built for real connections</h2>
+  <p class="section-sub">Everything you need to find what you're looking for — nothing you don't.</p>
+
+  <div class="features-grid">
+    <div class="feature">
+      <span class="feature-badge badge-free">Free</span>
+      <div class="feature-icon">✓</div>
+      <h3 class="feature-title">Verified profiles</h3>
+      <p class="feature-desc">Real people, real photos. Every profile manually reviewed before going live.</p>
+    </div>
+
+    <div class="feature">
+      <span class="feature-badge badge-free">Free</span>
+      <div class="feature-icon">🔖</div>
+      <h3 class="feature-title">Top or Bottom — declared</h3>
+      <p class="feature-desc">Every user picks a role. Filter by exactly what you want. The guessing game is over.</p>
+    </div>
+
+    <div class="feature">
+      <span class="feature-badge badge-free">Free</span>
+      <div class="feature-icon">⚡</div>
+      <h3 class="feature-title">Intent modes</h3>
+      <p class="feature-desc">Now, Date, Chat, or Travel. Set your vibe, match the energy.</p>
+    </div>
+
+    <div class="feature">
+      <span class="feature-badge badge-free">Free</span>
+      <div class="feature-icon">🎤</div>
+      <h3 class="feature-title">Voice messages</h3>
+      <p class="feature-desc">Hear them before you meet. Voice notes build trust faster than text.</p>
+    </div>
+
+    <div class="feature">
+      <span class="feature-badge badge-pro">Pro</span>
+      <div class="feature-icon">📍</div>
+      <h3 class="feature-title">Advanced filters</h3>
+      <p class="feature-desc">Distance, height, build, intent, role, verification status — filter exactly how you want.</p>
+    </div>
+
+    <div class="feature">
+      <span class="feature-badge badge-pro">Pro</span>
+      <div class="feature-icon">👁</div>
+      <h3 class="feature-title">Discreet mode</h3>
+      <p class="feature-desc">Hide the app icon. Control who sees you. Stay private when it matters.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PREMIUM -->
+<section class="premium">
+  <div class="premium-content">
+    <span class="premium-badge">Invitation Only</span>
+    <h2 class="premium-title">BREEDX Black</h2>
+    <p class="premium-sub">Premium tier for those who want priority access, exclusive features, and a curated network.</p>
+
+    <div class="premium-features">
+      <div class="premium-feature">
+        <div class="premium-feature-icon">⚡</div>
+        <h4 class="premium-feature-title">Priority visibility</h4>
+        <p class="premium-feature-desc">Your profile appears first in discovery</p>
+      </div>
+      <div class="premium-feature">
+        <div class="premium-feature-icon">🎯</div>
+        <h4 class="premium-feature-title">Read receipts</h4>
+        <p class="premium-feature-desc">Know when your messages are seen</p>
+      </div>
+      <div class="premium-feature">
+        <div class="premium-feature-icon">🌍</div>
+        <h4 class="premium-feature-title">Travel mode</h4>
+        <p class="premium-feature-desc">Connect before you land anywhere</p>
+      </div>
+    </div>
+
+    <button class="premium-cta">Request Access</button>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <p class="section-pre">Pricing</p>
+  <h2 class="section-title">Choose your plan</h2>
+  <p class="section-sub">Start free, upgrade when you're ready.</p>
+
+  <div class="pricing-grid">
+    <div class="plan">
+      <p class="plan-name">Free</p>
+      <p class="plan-price">$0</p>
+      <p class="plan-desc">Everything you need to get started</p>
+      <ul class="plan-features">
+        <li class="plan-feature">Create verified profile</li>
+        <li class="plan-feature">Browse and match</li>
+        <li class="plan-feature">Filter by role (Top/Bottom)</li>
+        <li class="plan-feature">Unlimited messaging</li>
+        <li class="plan-feature">Voice messages</li>
+        <li class="plan-feature">Intent modes</li>
+      </ul>
+      <button class="plan-btn secondary">Get Started</button>
+    </div>
+
+    <div class="plan featured">
+      <span class="plan-badge">Most Popular</span>
+      <p class="plan-name">Members Plus</p>
+      <p class="plan-price">$4.99<span>/mo</span></p>
+      <p class="plan-desc">Unlock premium features</p>
+      <ul class="plan-features">
+        <li class="plan-feature">Everything in Free</li>
+        <li class="plan-feature">See who liked you</li>
+        <li class="plan-feature">Advanced filters (height, build, distance)</li>
+        <li class="plan-feature">Discreet mode</li>
+        <li class="plan-feature">Unlimited rewinds</li>
+        <li class="plan-feature">Ad-free experience</li>
+      </ul>
+      <button class="plan-btn">Start 7-Day Trial</button>
+    </div>
+
+    <div class="plan">
+      <p class="plan-name">BREEDX Black</p>
+      <p class="plan-price">Invite</p>
+      <p class="plan-desc">Exclusive access, curated network</p>
+      <ul class="plan-features">
+        <li class="plan-feature">Everything in Members Plus</li>
+        <li class="plan-feature">Priority visibility</li>
+        <li class="plan-feature">Read receipts</li>
+        <li class="plan-feature">Travel mode</li>
+        <li class="plan-feature">Concierge support</li>
+        <li class="plan-feature">Private events</li>
+      </ul>
+      <button class="plan-btn">Request Access</button>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section class="download" id="download">
+  <div class="download-content">
+    <p class="section-pre">Get Started</p>
+    <h2 class="section-title">Available now</h2>
+    <p class="section-sub">Download BREEDX on iOS and Android. Your next connection starts here.</p>
+
+    <div class="download-buttons">
+      <a href="#" class="store-btn">
+        <div class="store-icon">🍎</div>
+        <div class="store-text">
+          <p class="store-pre">Download on the</p>
+          <p class="store-name">App Store</p>
+        </div>
+      </a>
+      <a href="#" class="store-btn">
+        <div class="store-icon">🤖</div>
+        <div class="store-text">
+          <p class="store-pre">Get it on</p>
+          <p class="store-name">Google Play</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="footer-logo">BREED<span style="color:var(--accent)">X</span></div>
+      <p class="footer-tagline">The gay dating app. Top or Bottom — declared. Not everyone gets in.</p>
+    </div>
+
+    <div>
+      <h4 class="footer-section-title">Product</h4>
+      <ul class="footer-links">
+        <li class="footer-link"><a href="#features">Features</a></li>
+        <li class="footer-link"><a href="#pricing">Pricing</a></li>
+        <li class="footer-link"><a href="#download">Download</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="footer-section-title">Company</h4>
+      <ul class="footer-links">
+        <li class="footer-link"><a href="/about.html">About</a></li>
+        <li class="footer-link"><a href="/cdn-cgi/l/email-protection#e189848d8d8ea1918e828a88958e8d808392cf828e8c">Contact</a></li>
+        <li class="footer-link"><a href="#support">Support</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="footer-section-title">Legal</h4>
+      <ul class="footer-links">
+        <li class="footer-link"><a href="https://breedx.pockitolabs.com/privacy.html">Privacy Policy</a></li>
+        <li class="footer-link"><a href="https://breedx.pockitolabs.com/terms.html">Terms of Service</a></li>
+        <li class="footer-link"><a href="https://breedx.pockitolabs.com/moderation.html">Content Policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Pockito Labs. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="#" class="social-link">𝕏</a>
+      <a href="#" class="social-link">📷</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Generate wave bars for voice message
+const wave = document.getElementById('wave');
+if(wave) {
+  for(let i=0; i<22; i++){
+    const bar = document.createElement('div');
+    bar.className = 'vb-bar';
+    bar.style.h

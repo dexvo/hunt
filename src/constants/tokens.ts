@@ -1,45 +1,55 @@
-// LYNX Design Tokens — Slate/Violet palette
+// HUNT Design Tokens — Blood Red on Near-Black
+// Brand font: DM Sans | UI font: Inter
 
 export const Colors = {
   // Backgrounds
-  bg:           '#0D0F14',
-  surface1:     '#111318',
-  surface2:     '#161A22',
-  surface3:     '#1C2130',
+  bg:           '#0A0A0C',
+  surface1:     '#111114',
+  surface2:     '#18181C',
+  surface3:     '#1F1F24',
 
   // Ice text
-  ice:          '#E8EEFF',
-  ice2:         '#B0B8D0',
-  ice3:         '#5A6480',
+  ice:          '#F2F0F4',
+  ice2:         '#A8A4B0',
+  ice3:         '#5C5868',
 
-  // Accent — cool violet
-  accent:       '#7B8FFF',
-  accentBg:     '#7B8FFF18',
-  accentBorder: '#7B8FFF40',
+  // Accent — blood red
+  accent:       '#E8364B',
+  accentBg:     '#E8364B14',
+  accentBorder: '#E8364B2E',
 
   // Borders
-  border:       '#1E2435',
-  border2:      '#171C28',
+  border:       'rgba(255,255,255,0.07)',
+  border2:      'rgba(255,255,255,0.04)',
+
+  // Role colors
+  roleTop:      '#E8364B',
+  roleBottom:   '#34D399',
 
   // Utilities
   white:        '#FFFFFF',
   error:        '#FF5F6D',
-  success:      '#4FD1A5',
-  online:       '#4FD1A5',
+  success:      '#34D399',
+  online:       '#34D399',
 } as const;
 
 export const Typography = {
-  // Font families
-  light:    'Outfit-Light',
-  regular:  'Outfit-Regular',
-  medium:   'Outfit-Medium',
-  semibold: 'Outfit-SemiBold',
+  // Brand font (logo, headings, names, badges)
+  brand:    'DMSans-Bold',
+  brandMed: 'DMSans-SemiBold',
+
+  // UI font (body, labels, buttons, meta)
+  light:    'Inter-Light',
+  regular:  'Inter-Regular',
+  medium:   'Inter-Medium',
+  semibold: 'Inter-SemiBold',
 
   // Weights (numeric)
   300: '300',
   400: '400',
   500: '500',
   600: '600',
+  700: '700',
 
   // Named sizes
   xs:   10,
@@ -51,6 +61,10 @@ export const Typography = {
   '2xl': 24,
   '3xl': 28,
   '4xl': 34,
+
+  // Letter spacing
+  tight: -0.5,
+  logo:  5,
 } as const;
 
 export const Spacing = {

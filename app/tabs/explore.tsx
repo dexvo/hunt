@@ -19,9 +19,9 @@ export default function ExploreScreen() {
             <View style={styles.mark}>
               <View style={styles.markOuter}><View style={styles.markInner} /></View>
             </View>
-            <Text style={styles.title}>LYNX Black feature</Text>
+            <Text style={styles.title}>HUNT Black feature</Text>
             <Text style={styles.sub}>Browse profiles by city, filter by vibe, and discover members outside your area.</Text>
-            <Button label="Unlock with LYNX Black" variant="primary" onPress={() => router.push('/paywall')} style={{ marginTop: Spacing.xl }} />
+            <Button label="Unlock with HUNT Black" variant="primary" onPress={() => router.push('/paywall')} style={{ marginTop: Spacing.xl }} />
           </>
         ) : (
           <Text style={styles.sub}>Coming soon.</Text>

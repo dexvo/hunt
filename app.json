@@ -1,32 +1,32 @@
 {
   "expo": {
-    "name": "LYNX",
-    "slug": "lynx",
+    "name": "HUNT",
+    "slug": "hunt",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#0D0F14"
+      "backgroundColor": "#0A0A0C"
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.pockitolabs.lynx",
+      "bundleIdentifier": "com.pockitolabs.hunt",
       "infoPlist": {
-        "NSCameraUsageDescription": "LYNX needs camera access to record your video intro.",
-        "NSPhotoLibraryUsageDescription": "LYNX needs photo library access to add your profile photos.",
-        "NSMicrophoneUsageDescription": "LYNX needs microphone access to record voice messages.",
-        "NSLocationWhenInUseUsageDescription": "LYNX uses your location to show nearby members."
+        "NSCameraUsageDescription": "HUNT needs camera access to record your video intro.",
+        "NSPhotoLibraryUsageDescription": "HUNT needs photo library access to add your profile photos.",
+        "NSMicrophoneUsageDescription": "HUNT needs microphone access to record voice messages.",
+        "NSLocationWhenInUseUsageDescription": "HUNT uses your location to show nearby members.",
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#0D0F14"
+        "backgroundColor": "#0A0A0C"
       },
-      "package": "com.pockitolabs.lynx",
+      "package": "com.pockitolabs.hunt",
       "permissions": [
         "android.permission.ACCESS_FINE_LOCATION",
         "android.permission.ACCESS_COARSE_LOCATION",
@@ -48,24 +48,33 @@
         "expo-notifications",
         {
           "icon": "./assets/notification-icon.png",
-          "color": "#7B8FFF",
+          "color": "#E8364B",
           "sounds": []
         }
       ],
       [
         "expo-location",
         {
-          "locationAlwaysAndWhenInUsePermission": "Allow LYNX to use your location to show nearby members."
+          "locationAlwaysAndWhenInUsePermission": "Allow HUNT to use your location to show nearby members."
         }
       ],
       [
         "expo-image-picker",
         {
-          "photosPermission": "LYNX needs access to your photos to set your profile picture."
+          "photosPermission": "HUNT needs access to your photos to set your profile picture."
+        }
+      ],
+      "expo-asset",
+      "@react-native-community/datetimepicker",
+      "expo-apple-authentication",
+      [
+        "@react-native-google-signin/google-signin",
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.REPLACE_WITH_YOUR_IOS_REVERSED_CLIENT_ID"
         }
       ]
     ],
-    "scheme": "lynx",
+    "scheme": "hunt",
     "extra": {
       "router": {
         "origin": false
