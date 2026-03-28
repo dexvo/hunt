@@ -87,7 +87,7 @@ export default function MessagesScreen() {
         ListEmptyComponent={
           <View style={styles.empty}>
             <Text style={styles.emptyTitle}>No conversations yet</Text>
-            <Text variant="sm" color={Colors.ice3}>Tap someone in the grid to start chatting</Text>
+            <Text style={styles.emptyHint}>Tap someone in the grid to start chatting</Text>
           </View>
         }
       />
@@ -98,24 +98,25 @@ export default function MessagesScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.surface1 },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Spacing.lg, paddingVertical: Spacing.sm, borderBottomWidth: 1, borderBottomColor: Colors.border2 },
-  unreadSub: { fontSize: 10, color: Colors.accent, marginTop: 2 },
+  unreadSub: { fontFamily: Typography.medium, fontSize: 10, color: Colors.accent, marginTop: 2 },
   iconBtn: { padding: 6 },
   iconText: { fontSize: 18, color: Colors.ice3 },
   row: { flexDirection: 'row', alignItems: 'center', gap: Spacing.md, paddingHorizontal: Spacing.lg, paddingVertical: Spacing.md, borderBottomWidth: 1, borderBottomColor: Colors.border2 },
   avatarWrap: { position: 'relative' },
   avatar: { width: 52, height: 52, borderRadius: 26, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', backgroundColor: Colors.surface2 },
-  avatarInitial: { fontSize: 20, fontWeight: Typography.semibold, color: Colors.ice },
-  onlineDot: { position: 'absolute', bottom: 1, right: 1, width: 10, height: 10, borderRadius: 5, backgroundColor: Colors.accent, borderWidth: 1.5, borderColor: Colors.surface1 },
+  avatarInitial: { fontFamily: Typography.brandMed, fontSize: 20, color: Colors.ice },
+  onlineDot: { position: 'absolute', bottom: 1, right: 1, width: 10, height: 10, borderRadius: 5, backgroundColor: Colors.online, borderWidth: 1.5, borderColor: Colors.surface1 },
   info: { flex: 1 },
   infoTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  name: { fontSize: Typography.base, fontWeight: Typography.regular, color: Colors.ice2 },
-  nameUnread: { fontWeight: Typography.semibold, color: Colors.ice },
-  time: { fontSize: 10, color: Colors.ice3 },
+  name: { fontFamily: Typography.regular, fontSize: Typography.base, color: Colors.ice2 },
+  nameUnread: { fontFamily: Typography.semibold, color: Colors.ice },
+  time: { fontFamily: Typography.regular, fontSize: 10, color: Colors.ice3 },
   infoBottom: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 2 },
-  preview: { fontSize: Typography.sm, color: Colors.ice3, flex: 1, marginRight: 8 },
+  preview: { fontFamily: Typography.regular, fontSize: Typography.sm, color: Colors.ice3, flex: 1, marginRight: 8 },
   previewUnread: { color: Colors.ice2 },
   badge: { backgroundColor: Colors.accent, borderRadius: 9, minWidth: 18, height: 18, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 4 },
-  badgeText: { fontSize: 9, fontWeight: Typography.semibold, color: Colors.white },
+  badgeText: { fontFamily: Typography.semibold, fontSize: 9, color: Colors.white },
   empty: { alignItems: 'center', paddingTop: 80, gap: 8 },
-  emptyTitle: { fontSize: Typography.md, fontWeight: Typography.medium, color: Colors.ice2 },
+  emptyTitle: { fontFamily: Typography.medium, fontSize: Typography.md, color: Colors.ice2 },
+  emptyHint: { fontFamily: Typography.regular, fontSize: Typography.sm, color: Colors.ice3 },
 });

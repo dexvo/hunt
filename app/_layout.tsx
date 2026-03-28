@@ -1,88 +1,74 @@
-import 'react-native-url-polyfill/auto';
-import React, { useEffect } from 'react';
-import { Stack } from 'expo-router';
-import { router } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import * as SplashScreen from 'expo-splash-screen';
-import { useFonts } from 'expo-font';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useAuthSession, useOnlinePresence, useLocation } from '@/src/hooks';
-import { configureRevenueCat, identifyUser } from '@/src/lib/purchases';
-import { registerForPushNotifications, addNotificationResponseListener } from '@/src/lib/notifications';
+import React from 'react';
+import { Tabs } from 'expo-router';
+import { View, StyleSheet } from 'react-native';
+import { Colors, Typography } from '@/src/constants/tokens';
+import { Text } from '@/src/components/ui';
+import { useChatStore } from '@/src/store/chat.store';
 import { useAuthStore } from '@/src/store/auth.store';
-import { useSubStore } from '@/src/store/sub.store';
-import { Colors } from '@/src/constants/tokens';
 
-SplashScreen.preventAutoHideAsync();
-
-try { configureRevenueCat(); } catch (e) { console.warn('RevenueCat:', e); }
-
-const queryClient = new QueryClient({
-  defaultOptions: { queries: { retry: 2, staleTime: 30_000 } },
-});
-
-function AppProviders({ children }: { children: React.ReactNode }) {
-  useAuthSession();
-  useOnlinePresence();
-  useLocation();
-
-  const { user } = useAuthStore();
-  const { refresh, startListening } = useSubStore();
-
-  useEffect(() => {
-    if (!user?.id) return;
-    identifyUser(user.id);
-    refresh();
-    registerForPushNotifications(user.id).catch(console.error);
-    const unsub = startListening();
-    return unsub;
-  }, [user?.id]);
-
-  useEffect(() => {
-    const sub = addNotificationResponseListener((response) => {
-      const data = response.notification.request.content.data as any;
-      if (data?.type === 'message' && data?.conversationId) {
-        router.push(`/chat/${data.conversationId}`);
-      }
-    });
-    return () => sub.remove();
-  }, []);
-
-  return <>{children}</>;
-}
-
-export default function RootLayout() {
-  const [fontsLoaded] = useFonts({
-    'DMSans-Bold':      require('../assets/fonts/DMSans-Bold.ttf'),
-    'DMSans-SemiBold':  require('../assets/fonts/DMSans-SemiBold.ttf'),
-    'Inter-Light':      require('../assets/fonts/Inter-Light.ttf'),
-    'Inter-Regular':    require('../assets/fonts/Inter-Regular.ttf'),
-    'Inter-Medium':     require('../assets/fonts/Inter-Medium.ttf'),
-    'Inter-SemiBold':   require('../assets/fonts/Inter-SemiBold.ttf'),
-  });
-
-  useEffect(() => {
-    if (fontsLoaded) SplashScreen.hideAsync();
-  }, [fontsLoaded]);
-
-  if (!fontsLoaded) return null;
-
+function TabIcon({ symbol, label, focused }: { symbol: string; label: string; focused: boolean }) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <AppProviders>
-          <StatusBar style="light" backgroundColor={Colors.bg} />
-          <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: Colors.bg } }}>
-            <Stack.Screen name="auth"        options={{ headerShown: false }} />
-            <Stack.Screen name="onboarding"  options={{ headerShown: false, gestureEnabled: false }} />
-            <Stack.Screen name="tabs"        options={{ headerShown: false }} />
-            <Stack.Screen name="paywall"     options={{ presentation: 'modal', headerShown: false }} />
-            <Stack.Screen name="member/[id]" options={{ presentation: 'modal', headerShown: false }} />
-            <Stack.Screen name="chat/[id]"   options={{ headerShown: false, animation: 'slide_from_right' }} />
-          </Stack>
-        </AppProviders>
-      </GestureHandlerRootView>
-    </QueryClientProvider>
+    <View style={styles.tab}>
+      <Text style={[styles.symbol, focused && styles.symbolActive]}>{symbol}</Text>
+      <Text style={[styles.label, focused && styles.labelActive]}>{label}</Text>
+    </View>
   );
 }
+
+function MessagesTabIcon({ focused }: { focused: boolean }) {
+  const unread = useChatStore((s) => s.conversations.reduce((sum, c) => sum + (c.unread_count || 0), 0));
+  return (
+    <View style={styles.tab}>
+      <View>
+        <Text style={[styles.symbol, focused && styles.symbolActive]}>◻</Text>
+        {unread > 0 && (
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>{unread > 9 ? '9+' : unread}</Text>
+          </View>
+        )}
+      </View>
+      <Text style={[styles.label, focused && styles.labelActive]}>Messages</Text>
+    </View>
+  );
+}
+
+export default function TabsLayout() {
+  const { profile } = useAuthStore();
+  const isAdmin = profile?.is_admin === true;
+
+  return (
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: styles.bar,
+        tabBarActiveTintColor: Colors.accent,
+        tabBarInactiveTintColor: Colors.ice3,
+        tabBarShowLabel: false,
+      }}
+    >
+      <Tabs.Screen name="index"    options={{ tabBarIcon: ({ focused }) => <TabIcon symbol="⊞" label="Grid" focused={focused} /> }} />
+      <Tabs.Screen name="messages" options={{ tabBarIcon: ({ focused }) => <MessagesTabIcon focused={focused} /> }} />
+      <Tabs.Screen name="explore"  options={{ tabBarIcon: ({ focused }) => <TabIcon symbol="◎" label="Explore" focused={focused} /> }} />
+      <Tabs.Screen name="profile"  options={{ tabBarIcon: ({ focused }) => <TabIcon symbol="○" label="Profile" focused={focused} /> }} />
+      <Tabs.Screen
+        name="admin"
+        options={{
+          tabBarIcon: ({ focused }) => <TabIcon symbol="◆" label="Admin" focused={focused} />,
+          tabBarStyle: isAdmin ? styles.bar : { display: 'none' },
+          href: isAdmin ? undefined : null,
+        }}
+      />
+    </Tabs>
+  );
+}
+
+const styles = StyleSheet.create({
+  bar: { backgroundColor: Colors.surface1, borderTopColor: Colors.border2, borderTopWidth: 1, height: 68, paddingBottom: 10 },
+  tab: { alignItems: 'center', gap: 2 },
+  symbol: { fontSize: 18, color: Colors.ice3 },
+  symbolActive: { color: Colors.accent },
+  label: { fontFamily: Typography.medium, fontSize: 8, color: Colors.ice3, letterSpacing: 1, textTransform: 'uppercase' },
+  labelActive: { color: Colors.accent },
+  badge: { position: 'absolute', top: -3, right: -8, backgroundColor: Colors.accent, borderRadius: 7, minWidth: 14, height: 14, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 2 },
+  badgeText: { fontFamily: Typography.semibold, fontSize: 7, color: Colors.white },
+});

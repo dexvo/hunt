@@ -255,9 +255,9 @@ export default function AdminScreen() {
                 <Text style={styles.userMeta}>{item.verification_status} · {item.city}</Text>
               </View>
               <View style={styles.userBadges}>
-                {item.is_verified && <Text style={styles.badge}>✓</Text>}
-                {item.is_premium && <Text style={[styles.badge, { color: Colors.accent }]}>B</Text>}
-                {item.is_incognito && <Text style={[styles.badge, { color: Colors.error }]}>H</Text>}
+                {item.is_verified && <Text style={styles.badgeIcon}>✓</Text>}
+                {item.is_premium && <Text style={[styles.badgeIcon, { color: Colors.accent }]}>B</Text>}
+                {item.is_incognito && <Text style={[styles.badgeIcon, { color: Colors.error }]}>H</Text>}
               </View>
             </TouchableOpacity>
           )}
@@ -289,42 +289,42 @@ export default function AdminScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.surface1 },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Spacing.lg, paddingVertical: Spacing.sm },
-  adminBadge: { fontSize: Typography.xs, color: Colors.accent, fontWeight: Typography.semibold as any },
+  adminBadge: { fontFamily: Typography.brandMed, fontSize: Typography.xs, color: Colors.accent },
   tabs: { flexDirection: 'row', borderBottomWidth: 1, borderBottomColor: Colors.border2 },
   tabBtn: { flex: 1, paddingVertical: Spacing.md, alignItems: 'center' },
   tabBtnActive: { borderBottomWidth: 2, borderBottomColor: Colors.accent },
-  tabText: { fontSize: Typography.sm, color: Colors.ice3 },
-  tabTextActive: { color: Colors.accent, fontWeight: Typography.semibold as any },
+  tabText: { fontFamily: Typography.regular, fontSize: Typography.sm, color: Colors.ice3 },
+  tabTextActive: { fontFamily: Typography.semibold, color: Colors.accent },
   queueCard: { backgroundColor: Colors.surface2, borderRadius: Radius.lg, borderWidth: 1, borderColor: Colors.border, padding: Spacing.md, gap: Spacing.md },
   queuePhotos: { flexDirection: 'row', gap: Spacing.sm },
   queuePhoto: { width: 80, height: 100, borderRadius: Radius.md, backgroundColor: Colors.surface3 },
   queueInfo: { gap: 4 },
-  queueName: { fontSize: Typography.base, fontWeight: Typography.semibold as any, color: Colors.ice },
-  queueSub: { fontSize: Typography.xs, color: Colors.ice3 },
+  queueName: { fontFamily: Typography.brandMed, fontSize: Typography.base, color: Colors.ice },
+  queueSub: { fontFamily: Typography.regular, fontSize: Typography.xs, color: Colors.ice3 },
   queueActions: { flexDirection: 'row', gap: Spacing.sm },
   approveBtn: { flex: 1, backgroundColor: Colors.success + '20', borderWidth: 1, borderColor: Colors.success + '60', borderRadius: Radius.md, padding: Spacing.sm, alignItems: 'center' },
-  approveBtnText: { fontSize: Typography.sm, color: Colors.success, fontWeight: Typography.semibold as any },
+  approveBtnText: { fontFamily: Typography.semibold, fontSize: Typography.sm, color: Colors.success },
   rejectBtn: { flex: 1, backgroundColor: Colors.error + '20', borderWidth: 1, borderColor: Colors.error + '60', borderRadius: Radius.md, padding: Spacing.sm, alignItems: 'center' },
-  rejectBtnText: { fontSize: Typography.sm, color: Colors.error, fontWeight: Typography.semibold as any },
+  rejectBtnText: { fontFamily: Typography.semibold, fontSize: Typography.sm, color: Colors.error },
   empty: { alignItems: 'center', paddingTop: 60 },
-  emptyText: { color: Colors.ice3, fontSize: Typography.base },
+  emptyText: { fontFamily: Typography.regular, color: Colors.ice3, fontSize: Typography.base },
   userRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.md, padding: Spacing.md, backgroundColor: Colors.surface2, borderRadius: Radius.md, borderWidth: 1, borderColor: Colors.border },
   userAvatar: { width: 44, height: 44, borderRadius: 22, overflow: 'hidden' },
-  userName: { fontSize: Typography.base, fontWeight: Typography.medium as any, color: Colors.ice },
-  userMeta: { fontSize: Typography.xs, color: Colors.ice3 },
+  userName: { fontFamily: Typography.medium, fontSize: Typography.base, color: Colors.ice },
+  userMeta: { fontFamily: Typography.regular, fontSize: Typography.xs, color: Colors.ice3 },
   userBadges: { flexDirection: 'row', gap: 4 },
-  badge: { fontSize: Typography.xs, fontWeight: Typography.semibold as any, color: Colors.success },
+  badgeIcon: { fontFamily: Typography.semibold, fontSize: Typography.xs, color: Colors.success },
   statCard: { backgroundColor: Colors.surface2, borderRadius: Radius.lg, borderWidth: 1, borderColor: Colors.border, padding: Spacing.lg, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  statCardLabel: { fontSize: Typography.base, color: Colors.ice2 },
-  statCardVal: { fontSize: Typography['2xl'], fontWeight: Typography.semibold as any, color: Colors.ice },
+  statCardLabel: { fontFamily: Typography.regular, fontSize: Typography.base, color: Colors.ice2 },
+  statCardVal: { fontFamily: Typography.brand, fontSize: Typography['2xl'], color: Colors.ice },
   backBtn: { paddingVertical: Spacing.sm },
-  backText: { fontSize: Typography.base, color: Colors.accent },
+  backText: { fontFamily: Typography.medium, fontSize: Typography.base, color: Colors.accent },
   photoRow: { flexDirection: 'row', gap: Spacing.md },
   photoWrap: { gap: 6 },
   photo: { width: 140, height: 180, borderRadius: Radius.md },
-  photoLabel: { fontSize: Typography.xs, color: Colors.ice3, textAlign: 'center' },
+  photoLabel: { fontFamily: Typography.regular, fontSize: Typography.xs, color: Colors.ice3, textAlign: 'center' },
   statRow: { flexDirection: 'row', gap: Spacing.md },
   statItem: { flex: 1, backgroundColor: Colors.surface2, borderRadius: Radius.md, padding: Spacing.md, alignItems: 'center', gap: 4 },
-  statLabel: { fontSize: Typography.xs, color: Colors.ice3 },
-  statVal: { fontSize: Typography.base, fontWeight: Typography.semibold as any, color: Colors.ice },
+  statLabel: { fontFamily: Typography.regular, fontSize: Typography.xs, color: Colors.ice3 },
+  statVal: { fontFamily: Typography.semibold, fontSize: Typography.base, color: Colors.ice },
 });
